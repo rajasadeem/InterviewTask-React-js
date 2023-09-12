@@ -13,6 +13,7 @@ const products = [
 const Home = () => {
 
     const [category, setCategory] = useState("")
+    const [brand, setBrand] = useState("")
 
     const dispatch = useDispatch()
 
@@ -45,16 +46,15 @@ const Home = () => {
     }
 
     const categoryFilter = (e) => {
-        console.log("CATEGORY", e.target.value);
         setCategory(e.target.value)
         const items = products.filter(item => item.category.toLowerCase().includes(e.target.value.toLowerCase()))
-        console.log("ITEMMS", items);
-        if (e.target.value) {
-            dispatch(updateProducts(items))
-        }
-        else {
-            dispatch(updateProducts(products))
-        }
+        dispatch(updateProducts(items))
+    }
+
+    const brandFilter = (e) => {
+        setBrand(e.target.value)
+        const items = products.filter(item => item.brand.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        dispatch(updateProducts(items))
     }
 
     return (
@@ -69,7 +69,9 @@ const Home = () => {
             <button onClick={sortProductsDescending}>Sort Products in Descending by Price</button>
 
             <h3>Categories</h3>
-            <Dropdown products={products} onChange={categoryFilter} value={category} />
+            <Dropdown products={products.map(item => item?.category)} onChange={categoryFilter} value={category} />
+            <h3>Brand</h3>
+            <Dropdown products={products.map(item => item.brand.name)} onChange={brandFilter} value={brand} />
 
             <h1>Products:</h1>
             {
@@ -79,6 +81,7 @@ const Home = () => {
                     price={item?.price}
                     category={item?.category}
                     rating={item?.rating}
+                    brand={item?.brand?.name}
                 />)
                     : "No products to Show"
             }

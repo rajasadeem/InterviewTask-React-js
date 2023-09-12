@@ -7,8 +7,8 @@ const Dropdown = ({ products, onChange, value }) => {
 
             <select value={value} onChange={onChange}>
                 {
-                    products.map(item => <option value={item.category}>
-                        {item.category}
+                    products.map(item => <option value={item}>
+                        {item}
                     </option>)
                 }
             </select>
