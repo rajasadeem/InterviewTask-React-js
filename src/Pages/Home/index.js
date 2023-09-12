@@ -65,8 +65,8 @@ const Home = () => {
                 onChange={searchProductsHandler}
             />
             <br />
-            <button onClick={sortProductsAscending}>Sort Products in Asceding Order</button><br /><br />
-            <button onClick={sortProductsDescending}>Sort Products in Descending Order</button>
+            <button onClick={sortProductsAscending}>Sort Products in Asceding by Price</button><br /><br />
+            <button onClick={sortProductsDescending}>Sort Products in Descending by Price</button>
 
             <h3>Categories</h3>
             <Dropdown products={products} onChange={categoryFilter} value={category} />
