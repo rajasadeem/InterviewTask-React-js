@@ -25,7 +25,7 @@ const Home = () => {
     let data = state?.products?.products
 
     const searchProductsHandler = (e) => {
-        const items = data?.filter(item => item?.productName?.toLowerCase()?.includes(e.target.value?.toLowerCase()))
+        const items = products?.filter(item => item?.productName?.toLowerCase()?.includes(e.target.value?.toLowerCase()))
         if (e.target.value) {
             dispatch(updateProducts(items))
         }
