@@ -47,18 +47,18 @@ const Home = () => {
 
     const categoryFilter = (e) => {
         setCategory(e.target.value)
-        const items = products.filter(item => item.category.toLowerCase().includes(e.target.value.toLowerCase()))
+        const items = products.filter(item => item?.category.toLowerCase().includes(e.target.value.toLowerCase()))
         dispatch(updateProducts(items))
     }
 
     const brandFilter = (e) => {
         setBrand(e.target.value)
-        const items = products.filter(item => item.brand.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        const items = products.filter(item => item?.brand?.name.toLowerCase().includes(e.target.value.toLowerCase()))
         dispatch(updateProducts(items))
     }
 
-    let categories = products?.map(item => item.category)
-    let brands = products?.map(item => item.brand.name)
+    let categories = products?.map(item => item?.category)
+    let brands = products?.map(item => item?.brand?.name)
 
     const removeDuplicates = (arr) => {
         return [...new Set(arr)];
