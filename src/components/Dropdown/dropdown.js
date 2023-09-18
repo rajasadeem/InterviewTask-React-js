@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Dropdown = ({ products, onChange, value }) => {
-    // console.log("PRODUCTS", products);
     return (
         <div>
 

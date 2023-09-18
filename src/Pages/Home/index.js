@@ -57,6 +57,13 @@ const Home = () => {
         dispatch(updateProducts(items))
     }
 
+    let categories = products?.map(item => item.category)
+    let brands = products?.map(item => item.brand.name)
+
+    const removeDuplicates = (arr) => {
+        return [...new Set(arr)];
+    }
+
     return (
         <div>
             <h3>Search</h3>
@@ -69,9 +76,9 @@ const Home = () => {
             <button onClick={sortProductsDescending}>Sort Products in Descending by Price</button>
 
             <h3>Categories</h3>
-            <Dropdown products={products.map(item => item?.category)} onChange={categoryFilter} value={category} />
+            <Dropdown products={removeDuplicates(categories)} onChange={categoryFilter} value={category} />
             <h3>Brand</h3>
-            <Dropdown products={products.map(item => item.brand.name)} onChange={brandFilter} value={brand} />
+            <Dropdown products={removeDuplicates(brands)} onChange={brandFilter} value={brand} />
 
             <h1>Products:</h1>
             {
